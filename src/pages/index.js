@@ -1,31 +1,48 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Masonry from 'react-masonry-component'
+import { graphql } from 'gatsby'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
 
-const IndexPage = ({ data }) => (
+const Index = ({ data: { about } }) => (
   <Layout>
-    <div></div>
+    <article className="sheet">
+      <HelmetDatoCms seo={about.seoMetaTags} />
+      <div className="sheet__inner">
+        <h1 className="sheet__title">{about.title}</h1>
+        <p className="sheet__lead">{about.subtitle}</p>
+        <div className="sheet__gallery">
+          <Img fluid={about.photo.fluid} />
+        </div>
+        <div
+          className="sheet__body"
+          dangerouslySetInnerHTML={{
+            __html: about.bioNode.childMarkdownRemark.html,
+          }}
+        />
+      </div>
+    </article>
   </Layout>
 )
 
-export default IndexPage
+export default Index
 
 export const query = graphql`
-  query IndexQuery {
-    allDatoCmsWork(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          slug
-          excerpt
-          coverImage {
-            fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsSizes
-            }
-          }
+  query AboutQuery {
+    about: datoCmsAboutPage {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      subtitle
+      photo {
+        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
+      bioNode {
+        childMarkdownRemark {
+          html
         }
       }
     }

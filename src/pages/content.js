@@ -1,17 +1,17 @@
 import React from 'react'
 import Layout from "../components/layout"
 
-const Sponsor = () => (
+const Content = () => (
   <Layout>
     <article className="sheet">
       <div className="sheet__inner">
         <div
           className="sheet__body"
         />
-        Email: email to Sponsor Jewels thisemail@gmail.com
+        Subscribe to my onlyfans
       </div>
     </article>
   </Layout>
 )
 
-export default Sponsor
+export default Content
