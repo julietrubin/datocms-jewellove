@@ -72,7 +72,7 @@ const TemplateWrapper = ({ children }) => {
                   <Link to="/sponsor">Sponsor</Link>
                 </li>
               </ul>
-              <p className="sidebar__social">
+              {/* <p className="sidebar__social">
                 {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
                   <a
                     key={profile.profileType}
@@ -83,7 +83,7 @@ const TemplateWrapper = ({ children }) => {
                     {" "}
                   </a>
                 ))}
-              </p>
+              </p> */}
               <div className="sidebar__copyright">
                 {data.datoCmsHome.copyright}
               </div>
