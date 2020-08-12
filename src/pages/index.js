@@ -1,50 +1,31 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Img from 'gatsby-image'
 import Layout from "../components/layout"
 
-const Index = ({ data: { about } }) => (
+const Index = () => (
   <Layout>
-    <article className="sheet">
-      <HelmetDatoCms seo={about.seoMetaTags} />
+  <article className="sheet">
       <div className="sheet__inner">
-        <h1 className="sheet__title">{about.title}</h1>
-        <p className="sheet__lead">{about.subtitle}</p>
-        <div className="sheet__gallery">
-          <Img fluid={about.photo.fluid} />
-        </div>
         <div
           className="sheet__body"
-          dangerouslySetInnerHTML={{
-            __html: about.bioNode.childMarkdownRemark.html,
-          }}
         />
+        <ul>
+            <li class="buttons">
+                <a class="button" href="https://onlyfans.com/jewel_love" target="blank">Only Fans</a>
+            </li>
+            <li class="buttons">
+                <a class="button" href="https://teespring.com/stores/jewellove" target="blank">Store</a>
+            </li>
+            <li class="buttons">
+                <a class="button" href="https://www.amazon.com/hz/wishlist/ls/252KJ23H2U8FA?ref_=wl_share" target="blank">Wishlist</a>
+            </li>
+            <li class="buttons">
+                <a class="button" href="https://slink.bigovideo.tv/w3d5H3" target="blank">Bigo</a>
+            </li>
+        </ul>
       </div>
     </article>
   </Layout>
 )
 
 export default Index
-
-export const query = graphql`
-  query AboutQuery {
-    about: datoCmsAboutPage {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      title
-      subtitle
-      photo {
-        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
-          ...GatsbyDatoCmsSizes
-        }
-      }
-      bioNode {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
-`
