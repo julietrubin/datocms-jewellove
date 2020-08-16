@@ -8,7 +8,7 @@ const Sponsor = () => (
         <div
           className="sheet__body"
         />
-        Email befruity@gmail.com to Sponsor Jewels
+        Email befruity@gmail.com to sponsor Jewels. Business inquiries only.
       </div>
     </article>
   </Layout>
