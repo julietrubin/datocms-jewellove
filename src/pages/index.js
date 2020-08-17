@@ -32,3 +32,18 @@ const Index = () => (
 )
 
 export default Index
+
+
+export const query = graphql`
+  query LinksQuery {
+    links: allDatoCmsLink(sort: { fields: [position], order: ASC }) {
+      edges {
+          node {
+            profileType
+            url
+          }
+      }
+    }
+  }
+`
+

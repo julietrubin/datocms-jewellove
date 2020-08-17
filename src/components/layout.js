@@ -26,20 +26,8 @@ const TemplateWrapper = ({ children }) => {
             seoMetaTags {
               ...GatsbyDatoCmsSeoMetaTags
             }
-            introTextNode {
-              childMarkdownRemark {
-                html
-              }
-            }
+            introText
             copyright
-          }
-          allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
-            edges {
-              node {
-                profileType
-                url
-              }
-            }
           }
         }
       `}
@@ -47,16 +35,12 @@ const TemplateWrapper = ({ children }) => {
         <div className={`container ${showMenu ? "is-open" : ""}`}>
           <HelmetDatoCms
             favicon={data.datoCmsSite.faviconMetaTags}
+            seo={data.datoCmsHome.seoMetaTags}
           />
           <div className="container__sidebar">
             <div className="sidebar">
               <div
-                className="sidebar__intro"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    data.datoCmsHome.introTextNode.childMarkdownRemark.html
-                }}
-              />
+                className="sidebar__intro">{data.datoCmsHome.introText}</div>
               <ul className="sidebar__menu">
                 <li>
                   <Link to="/">Home</Link>
@@ -101,7 +85,7 @@ const TemplateWrapper = ({ children }) => {
                   className="sidebar__intro"
                   dangerouslySetInnerHTML={{
                     __html:
-                      data.datoCmsHome.introTextNode.childMarkdownRemark.html
+                      data.datoCmsHome.introTextNode
                   }}
                 />
                 </div>
@@ -121,3 +105,14 @@ TemplateWrapper.propTypes = {
 
 export default TemplateWrapper;
 /* eslint-enable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid*/
+
+
+
+// allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+          //   edges {
+          //     node {
+          //       profileType
+          //       url
+          //     }
+          //   }
+          // }
