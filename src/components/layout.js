@@ -89,14 +89,7 @@ const TemplateWrapper = ({ children }) => {
                   />
                 </div>
                 <div className="mobile-header__logo">	
-                  <div
-                  className="sidebar__intro"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      data.datoCmsHome.introTextNode
-                  }}
-                />
-                </div>
+                  <div className="sidebar__intro"/> {data.datoCmsHome.introText} </div>
               </div>
             </div>
             {children}
