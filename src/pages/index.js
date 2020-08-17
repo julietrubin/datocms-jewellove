@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 
-const Index = () => (
+const Index = ({ data: { links } }) => (
   <Layout>
   <article className="sheet">
       <div className="sheet__inner">
@@ -10,21 +10,18 @@ const Index = () => (
           className="sheet__body"
         />
         <ul>
-            <li class="buttons">
-                <a class="button" href="https://onlyfans.com/jewel_love" target="blank">Only Fans</a>
+          {links.edges.map(({ node: link }) => (
+            <li className="buttons">
+              <a
+                key={link.profileType}
+                href={link.url}
+                target="blank"
+                className="button"
+              >
+                {link.profileType}
+              </a>
             </li>
-            <li class="buttons">
-                <a class="button" href="https://teespring.com/stores/jewellove" target="blank">Merch Store</a>
-            </li>
-            <li class="buttons">
-                <a class="button" href="https://www.amazon.com/hz/wishlist/ls/252KJ23H2U8FA?ref_=wl_share" target="blank">Wishlist</a>
-            </li>
-            <li class="buttons">
-                <a class="button" href="https://www.cash.app/$moonsjewel" target="blank">CashApp</a>
-            </li>
-            <li class="buttons">
-                <a class="button" href="https://slink.bigovideo.tv/w3d5H3" target="blank">Bigo</a>
-            </li>
+          ))}
         </ul>
       </div>
     </article>
@@ -38,12 +35,11 @@ export const query = graphql`
   query LinksQuery {
     links: allDatoCmsLink(sort: { fields: [position], order: ASC }) {
       edges {
-          node {
-            profileType
-            url
-          }
+        node {
+          profileType
+          url
+        }
       }
     }
   }
 `
-

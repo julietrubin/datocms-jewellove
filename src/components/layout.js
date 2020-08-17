@@ -22,6 +22,14 @@ const TemplateWrapper = ({ children }) => {
               ...GatsbyDatoCmsFaviconMetaTags
             }
           }
+          allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+              edges {
+                node {
+                  profileType
+                  url
+                }
+              }
+            }
           datoCmsHome {
             seoMetaTags {
               ...GatsbyDatoCmsSeoMetaTags
@@ -52,7 +60,7 @@ const TemplateWrapper = ({ children }) => {
                   <Link to="/sponsor">Sponsor</Link>
                 </li>
               </ul>
-              {/* <p className="sidebar__social">
+              <p className="sidebar__social">
                 {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
                   <a
                     key={profile.profileType}
@@ -63,7 +71,7 @@ const TemplateWrapper = ({ children }) => {
                     {" "}
                   </a>
                 ))}
-              </p> */}
+              </p>
               <div className="sidebar__copyright">
                 {data.datoCmsHome.copyright}
               </div>
@@ -105,14 +113,3 @@ TemplateWrapper.propTypes = {
 
 export default TemplateWrapper;
 /* eslint-enable jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid*/
-
-
-
-// allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
-          //   edges {
-          //     node {
-          //       profileType
-          //       url
-          //     }
-          //   }
-          // }
