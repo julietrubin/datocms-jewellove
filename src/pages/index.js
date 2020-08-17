@@ -14,10 +14,13 @@ const Index = () => (
                 <a class="button" href="https://onlyfans.com/jewel_love" target="blank">Only Fans</a>
             </li>
             <li class="buttons">
-                <a class="button" href="https://teespring.com/stores/jewellove" target="blank">Store</a>
+                <a class="button" href="https://teespring.com/stores/jewellove" target="blank">Merch Store</a>
             </li>
             <li class="buttons">
                 <a class="button" href="https://www.amazon.com/hz/wishlist/ls/252KJ23H2U8FA?ref_=wl_share" target="blank">Wishlist</a>
+            </li>
+            <li class="buttons">
+                <a class="button" href="https://www.cash.app/$moonsjewel" target="blank">CashApp</a>
             </li>
             <li class="buttons">
                 <a class="button" href="https://slink.bigovideo.tv/w3d5H3" target="blank">Bigo</a>
